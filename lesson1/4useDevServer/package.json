@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack",
-    "build": "webpack-dev-server"
+    "dev": "webpack-dev-server --watch --devtool source-map"
   },
   "keywords": [
     "weback",

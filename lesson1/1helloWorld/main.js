@@ -1,5 +1,5 @@
 function showContent(){
-  document.getElementById("helloWorld").innerHTML = "hello World"; // Nolan
+  document.getElementById("helloWorld").innerHTML = "hello World";
 }
 
 module.exports = showContent;

@@ -15,7 +15,7 @@ webpack output is served from /
 while i visit http://localhost:8080/, the bundle.js file reqponse will 404,means we can't get this file.
 Because DevServer will put these file in internal storage.
 While visit js file, we use http to get it. DevServer will ignore the out.path property in webpack.config.js.
-so we shou change index.html
+so we should change index.html
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -36,5 +36,11 @@ so we shou change index.html
 </body>
 </html>
 ```
-**
+----------------------------------------------------
+
+### hot load ###
+add --watch option after webpack-dev-server,if we edit some file except the index.js, it will hot reload the page.
+
+### source code ###
+ It's helpful for us to debug.
 
