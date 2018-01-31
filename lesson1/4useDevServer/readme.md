@@ -1,24 +1,40 @@
-# try to use plugin
-
-In the last demo we add css, but i find that the css code has been bundle in bundle.js,I think this should not be a good idea.
-
-So this demo will tell us how to use plugin seprate css and js. 
-
-let's try!
-
-## add loader
-
-```js
-module: {
-    rules: [
-        {
-            // use regex to match css file
-            test: /\.css$/,
-            use: ["style-loader", "css-loader?minimize"]
-        }
-    ]
-}
+## use DevServer
+if we want to run our code on server, not static file,and hot load is also needed.
+>* provide Http service, not a static one
+>
+>* listenning the file change, hot load
+>
+>* provide Source Map, this will make debug more convenient
+>
+----------------------------------------------------------
+In order to meet these requirements, we can use webpack-dev-server.
 ```
-we also need to install these two loaders: npm i -D style-loader css-loader
+Project is running at http://localhost:8080/
+webpack output is served from /
+```
+while i visit http://localhost:8080/, the bundle.js file reqponse will 404,means we can't get this file.
+Because DevServer will put these file in internal storage.
+While visit js file, we use http to get it. DevServer will ignore the out.path property in webpack.config.js.
+so we shou change index.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./dist/main_ce4d8798.css"> -->
+    <link rel="stylesheet" href="./dist/main_ce4d8798.css">
+</head>
+<body>
+    This is a hello world demo.
+    <h1 id = "helloWorld"></h1>
+    <script src="bundle.js">
+    // <script src="./dist/bundle.js">
+    </script>
+</body>
+</html>
+```
+**
 
-Now it works.
